@@ -57,7 +57,7 @@ export const App = () => {
 
     return (
         <>
-            <div className="w-screen h-screen flex justify-center items-center">
+            <div className="w-screen h-screen flex justify-center items-center bg-linear-to-br from-[#f704fe] via-[#7c6fee] to-[#03d9de]">
                 {!loading && currentCard && !won ? (
                     <div className="flex flex-col gap-4">
                         <Button onClick={() => window.location.reload()}>Újrakezdem</Button>
@@ -73,7 +73,7 @@ export const App = () => {
                             >
                                 {/* Front (question) */}
                                 <div className="absolute inset-0 backface-hidden">
-                                    <Card className={cn("h-full w-full", borderColor)}>
+                                    <Card className={cn("h-full w-full bg-white text-black", borderColor)}>
                                         <CardHeader>
                                             <CardTitle>{currentCard.question}</CardTitle>
                                             <CardDescription>Válaszolj gyorsan!</CardDescription>
@@ -83,31 +83,31 @@ export const App = () => {
 
                                 {/* Back (answer) */}
                                 <div className="absolute inset-0 transform-[rotateY(180deg)] backface-hidden">
-                                    <Card className={cn("h-full w-full", borderColor)}>
+                                    <Card className={cn("h-full w-full bg-white text-black", borderColor)}>
                                         <CardHeader>
                                             <CardTitle>{currentCard.answer}</CardTitle>
                                             <CardDescription></CardDescription>
                                         </CardHeader>
-                                        <CardFooter className="flex gap-1">
-                                            <Button onClick={(e) => {
+                                        <CardFooter className="flex justify-evenly text-green-color">
+                                            <button className="flex gap-1 outline p-2 " onClick={(e) => {
                                                 e.stopPropagation();
                                                 nextCard();
-                                            }} variant="outline">
+                                            }}>
                                                 <Check/> Eltaláltam
-                                            </Button>
-                                            <Button onClick={(e) => {
+                                            </button>
+                                            <button className="flex gap-1 outline p-2 text-[#ff9396]" onClick={(e) => {
                                                 e.stopPropagation();
                                                 nextCard();
-                                            }} variant="outline">
+                                            }}>
                                                 <X/> Nem sikerült
-                                            </Button>
+                                            </button>
                                         </CardFooter>
                                     </Card>
                                 </div>
                             </div>
                         </div>
                         <div className="text-white text-center">{currentQuestionNumber + 1} / {flashCards.length}</div>
-                        <Progress value={(currentQuestionNumber + 1 )/ flashCards.length * 100} />
+                        <Progress className="h-5" value={(currentQuestionNumber + 1 )/ flashCards.length * 100} />
                     </div>
                 ) : won ? (
                     <div className="flex flex-col gap-4">

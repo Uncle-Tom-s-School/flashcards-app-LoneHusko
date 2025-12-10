@@ -112,6 +112,10 @@
 
 }
 
+@theme {
+  --color-green-color: #66cb92;
+  --color-red-color: #ff9396;
+}
 
 @layer base {
   * {
